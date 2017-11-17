@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="angular-ui-select/dist/select.css"/>
+	</head>
+
+	<body>
+
+		<div class="container-fluid" ng-controller="UiselectContr">
+			<div class="form-horizontal">
+
+				<div class="form-group">
+					<div class="col-md-3 col-sm-4">
+						<p class="m0">Array of strings</p>
+					</div>
+
+					<div class="col-md-4 col-sm-8">
+						<ui-select multiple="" ng-model="multipleDemo.colors" theme="bootstrap" ng-disabled="disabled">
+							<ui-select-match placeholder="Select colors...">{{$item}}</ui-select-match>
+							<ui-select-choices repeat="color in availableColors | filter:$select.search">{{color}}</ui-select-choices>
+						</ui-select>
+					</div>
+
+					<div class="col-md-5 col-xs-12">
+						<div class="text-sm text-muted mt-sm">Selected: {{multipleDemo.colors}}</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+		<script src="angular-ui-select/dist/select.js"></script>
+		<script type="text/javascript">
+			var app=angular.module('app',['ui-select']);
+			app.controller('UiselectContr',['$scope',function($scope){
+				 $scope.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
+
+				  $scope.multipleDemo = {};
+				  $scope.multipleDemo.colors = ['Blue','Red'];
+				
+			}]);
+			
+			
+		</script>
+	</body>
+
+</html>
